@@ -4,12 +4,6 @@ exports.CounterController = function ($scope) {
 	$scope.counter = 0
 }
 
-exports.counter = function() {
-	return {
-		controller: 'CounterController',
-		templateUrl: '/public/templates/counter.html'
-	}
-}
 
 
 
@@ -155,6 +149,16 @@ exports.ProductDetailsController = function($scope, $routeParams, $http) {
 };
 
 },{}],2:[function(require,module,exports){
+	
+	
+exports.counter = function() {
+	return {
+		controller: 'CounterController',
+		templateUrl: '/public/templates/counter.html'
+	}
+}
+	
+
 exports.addToCart = function() {
   return {
     controller: 'AddToCartController',

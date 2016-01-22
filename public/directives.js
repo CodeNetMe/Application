@@ -1,15 +1,18 @@
+
+// THESE DIRECTIVES DO NOT CURRENTLY WORK, USE THE ONES IN index.js inside bin!!!!!!!!
+
 exports.home = function() {
 	return {
 		controller: 'HomeController',
 		templateUrl: '/public/templates/home.html'
-	}
+	};
 }
 
 exports.counter = function() {
 	return {
 		controller: 'CounterController',
 		templateUrl: '/public/templates/counter.html'
-	}
+	};
 }
 
 /*exports.addToCart = function() {
