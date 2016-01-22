@@ -3,10 +3,26 @@ var express = require('express');
 var status = require('http-status');
 var _ = require('underscore');
 
+
+
 module.exports = function(wagner) {
   var api = express.Router();
 
   api.use(bodyparser.json());
+  
+  
+  //Change this to a put!!!!!!
+  api.get('/newStudent', wagner.invoke(function(User) {
+    return function(req, res) {
+
+	  var user = new User({ profile: {username:'john', password: '123'}});
+	  user.save(function (err) {
+	  if (err) return handleError(err);
+	  console.log("student added!")
+      // saved!
+      })
+    };
+  }));
 
   api.put('/me/cart', wagner.invoke(function(User) {
     return function(req, res) {

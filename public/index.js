@@ -3,7 +3,7 @@ var directives = require('./directives');
 var services = require('./services');
 var _ = require('underscore');
 
-var components = angular.module('mean-retail.components', ['ng']);
+var components = angular.module('cn-test.components', ['ng']);
 
 _.each(controllers, function(controller, name) {
   components.controller(name, controller);
@@ -17,7 +17,7 @@ _.each(services, function(factory, name) {
   components.factory(name, factory);
 });
 
-var app = angular.module('CNtest', ['CNtest.components', 'ngRoute']);
+var app = angular.module('cn-test', ['cn-test.components', 'ngRoute']);
 
 app.config(function($routeProvider) {
   $routeProvider.

@@ -1,4 +1,31 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+
+exports.CounterController = function ($scope) {
+	$scope.counter = 0
+}
+
+exports.counter = function() {
+	return {
+		controller: 'CounterController',
+		templateUrl: '/public/templates/counter.html'
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 exports.AddToCartController = function($scope, $http, $user, $timeout) {
   $scope.addToCart = function(product) {
     var obj = { product: product._id, quantity: 1 };
@@ -176,7 +203,7 @@ var directives = require('./directives');
 var services = require('./services');
 var _ = require('underscore');
 
-var components = angular.module('mean-retail.components', ['ng']);
+var components = angular.module('cn-test.components', ['ng']);
 
 _.each(controllers, function(controller, name) {
   components.controller(name, controller);
@@ -190,7 +217,7 @@ _.each(services, function(factory, name) {
   components.factory(name, factory);
 });
 
-var app = angular.module('mean-retail', ['mean-retail.components', 'ngRoute']);
+var app = angular.module('cn-test', ['cn-test.components', 'ngRoute']);
 
 app.config(function($routeProvider) {
   $routeProvider.

@@ -1,4 +1,4 @@
-<html ng-app="mean-retail">
+<html ng-app="cn-test">
   <head>
     <script type="text/javascript"
       src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.js">
@@ -14,5 +14,11 @@
   </head>
   <body>
   Hi
+  <counter></counter>
+  <div ng-controller = "CounterController" ng-click = "counter = counter + 1">
+	You've clicked this div {{counter}} times.
+  </div>
+  Hi2
   </body>
+
 </html>
