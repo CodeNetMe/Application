@@ -77,7 +77,7 @@ exports.ClassController = function($scope, $routeParams, $http){
     $scope.currentClass = data;
   })
 
-  $http.get('/api/v1/lessons', {params: {group: $scope.currentClass}).function(data){
+  $http.get('/api/v1/lessons', {params: {group: $scope.currentClass}}).success(function(data){
     $scope.lessons = data;
   })
 
