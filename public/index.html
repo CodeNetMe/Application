@@ -1,0 +1,41 @@
+<html ng-app="cn-test">
+  <head>
+  <script type="text/javascript"
+      src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.js">
+    </script>
+    <script type="text/javascript"
+      src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular-route.js">
+    </script>
+    <script type="text/javascript" src="/public/bin/index.js"></script>
+
+
+    <link rel="stylesheet" type="text/css" href="css/stylesheet.css" />
+
+<!--     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" /> -->
+  </head>
+  <body>
+
+  <!--Navbar-->
+  <div id="navbar" ng-controller="NavbarController">
+    <select ng-model="language">
+      <option value="">Language (Any)</option>
+      <option value="Java">Java</option >
+      <option value="Python">Python</option>
+    </select>
+    <select ng-model="level">
+      <option value="">Level (Any)</option>
+      <option value="Beginner">Beginner</option>
+      <option value="Intermediate">Intermediate</option>
+      <option value="Expert">Expert</option>
+    </select>
+    <input id="searchbar" type="text" value="Search for Classes">
+    <input type="button" value="Search">
+	<counter></counter>
+  </div>
+  <!--End Navbar-->
+  
+
+
+  </body>
+
+</html>
