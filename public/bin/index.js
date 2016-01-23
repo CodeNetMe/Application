@@ -29,8 +29,9 @@ exports.NavbarController = function ($scope,$http) {
 	{params : {title: $scope.title, level : $scope.level, language : $scope.program_language}}).success(function(data){
         $scope.classData = data;
         console.log($scope.classData);
+        $scope.searching = true;
     })
-    }
+  }
   $scope.newGroup = function(){
 	  //try changing this into a post later on
   	$http.get('/api/v1/newGroup',
@@ -202,13 +203,21 @@ exports.ProductDetailsController = function($scope, $routeParams, $http) {
 	
 	
 	
-//DIrectives
+//Directives
 	
 exports.counter = function() {
 	return {
 		controller: 'CounterController',
 		templateUrl: '/public/templates/counter.html'
 	}
+}
+
+exports.searchResults = function(){
+  return{
+    controller: 'NavbarController';
+    templateUrl: 'group-search.html';
+  }
+
 }
 	
 

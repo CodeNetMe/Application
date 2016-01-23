@@ -1,0 +1,19 @@
+<div class="group-search">
+  <div class="crumbs">
+    <div class="crumb" ng-repeat="group in classData">
+      <a ng-href="#/group/{{group.title}}">
+        {{group.title}}
+      </a>
+      <div class="divider" ng-hide="$last">
+        /
+      </div>
+      <div class="group-details">
+        {{ group.language }}<br/>
+        {{ group.level }}<br/>
+        {{ group.startDate }}<br/>
+      </div>
+    </div>
+  </div>
+
+</div>
+
