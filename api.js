@@ -20,7 +20,24 @@ module.exports = function(wagner) {
 	  //if (err) return handleError(err);
 	  //console.log("student added!")
       // saved!
-	  User.findOne( {'profile.username' : 'john'},function (err, user) {
+	  User.findOne( {'profile.username' : req.query.username},function (err, user) {
+		if (err) return handleError(err);
+		//console.log(user.profile.username);
+		//res.data = user.profile.username;
+		res.json(user);
+      })
+    };
+  }));
+  
+  api.get('/class', wagner.invoke(function(Class) {
+    return function(req, res) {
+
+	  //var user = new User({ profile: {username:'john', password: '123'}});
+	  //user.save(function (err) {
+	  //if (err) return handleError(err);
+	  //console.log("student added!")
+      // saved!
+	  Class.find( {'difficulty' : req.query.difficulty, ''},function (err, user) {
 		if (err) return handleError(err);
 		//console.log(user.profile.username);
 		//res.data = user.profile.username;
@@ -30,13 +47,13 @@ module.exports = function(wagner) {
   }));
   
   // Create a new user that can be a student or teacher.
-  api.put('/newUser', wagner.invoke(function(User) {
+  api.post('/newUser', wagner.invoke(function(User) {
     return function(req, res) {
 
-	  var user = req.user
+	  var user = new User({ profile: {username: req.body.username, password: req.body.password}});
 	  user.save(function (err) {
 	  if (err) return handleError(err);
-	  console.log("student added!")
+	  console.log("user added!")
       // saved!
       })
     };

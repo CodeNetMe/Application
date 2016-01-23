@@ -10,10 +10,14 @@ module.exports = function(wagner) {
   
   var User =
     mongoose.model('User', require('./user'), 'users');
+	
+  var Class =
+    mongoose.model('Class', require('./class'), 'classes');
 
   var models = {
     //Category: Category,
-    User: User
+    User: User,
+	Class: Class
 	  
   };
 
