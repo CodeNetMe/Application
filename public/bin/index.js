@@ -33,6 +33,7 @@ exports.NavbarController = function ($scope,$http) {
 
 
   $scope.search = function(){
+    $location.path('/search/' + $scope.language + '/' + $scope.level)
   	$http.get('/api/v1/groups',
 	{params : {title: $scope.title, level : $scope.level, language : $scope.program_language}}).success(function(data){
         $scope.classData = data;
@@ -40,7 +41,6 @@ exports.NavbarController = function ($scope,$http) {
 			element.startDate = moment(group.startDate).format('MM/DD/YYYY'); 
 		}
         console.log($scope.classData);
-        $scope.searching = true;
     })
   }
   $scope.newGroup = function(){
@@ -275,8 +275,8 @@ app.config(function($routeProvider) {
     when('#/group/:id', {
       template: '<class-page></class-page>' 
     }).
-    when('/checkout', {
-      template: '<checkout></checkout>'
+    when('#/search/:program_language/:level', {
+      template: '<search-results></search-results>'
     }).
     when('/product/:id', {
       template: '<product-details></product-details>'

@@ -21,18 +21,21 @@ body{
 	display : block
 }
 .group-details{
-	border:1px solid black;
+	display: inline-block;
+	background-color: #d6d6c2;
 	float:left;
 	padding:20px;
 	height: 200px;
-	width: 100px;
+	width: 200px;
 	text-align:center;
 	margin: 30px;
 
 }
 
 .group-details a{
-	font-size:20px;
+	font-size:16px;
+	font-weight: bold;
+	text-decoration: none;
 }
 
 .group-details img{
