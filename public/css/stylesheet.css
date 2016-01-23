@@ -1,0 +1,17 @@
+body{
+	font-family: Verdana, Arial;
+	margin:0px;
+}
+
+#navbar{
+	position:absolute;
+	width:100%;
+	margin:0px;
+	background-color: gray;
+	padding:10px;
+}
+
+#searchbar{
+	font-size:14px;
+	right:10px;
+}
