@@ -9,7 +9,9 @@
     "karma-mocha": "0.1.4",
     "http-status": "0.1.8",
     "underscore": "1.5.2",
-    "moment": "2.11.1"
+    "moment": "2.11.1",
+	"bootstrap" : "3.3.6",
+	"jquery" : "2.2.0"
   },
   "dependencies": {
     "angular-bootstrap-datetimepicker": "^0.4.0"

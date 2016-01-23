@@ -1,6 +1,6 @@
 <div class="group-search">
   <div class="crumbs">
-    <div class="crumb" ng-repeat="group in classData">
+    <div class="crumb" ng-repeat="group in classData track by $index">
       <a ng-href="#/group/{{group.title}}">
         {{group.title}}
       </a>

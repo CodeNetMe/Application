@@ -214,8 +214,8 @@ exports.counter = function() {
 
 exports.searchResults = function(){
   return{
-    controller: 'NavbarController';
-    templateUrl: 'group-search.html';
+    controller: 'NavbarController',
+    templateUrl: '/public/templates/group-search.html'
   }
 
 }
