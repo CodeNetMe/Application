@@ -4,7 +4,9 @@ exports.CounterController = function ($scope,$http) {
 	$scope.counter = 0;
 	$scope.userdata = 0
 	$http.
-	  get('/api/v1/user').success(function(data) {
+	  get('/api/v1/user', {
+    params: { username: "john" }
+}).success(function(data) {
 		  
 		  $scope.userdata = data
 		  console.log("Data:" + $scope.userdata)
