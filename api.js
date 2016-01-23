@@ -12,10 +12,29 @@ module.exports = function(wagner) {
   
   
   //Change this to a put!!!!!!
-  api.get('/newStudent', wagner.invoke(function(User) {
+  api.get('/user', wagner.invoke(function(User) {
     return function(req, res) {
 
-	  var user = new User({ profile: {username:'john', password: '123'}});
+	  //var user = new User({ profile: {username:'john', password: '123'}});
+	  //user.save(function (err) {
+	  //if (err) return handleError(err);
+	  //console.log("student added!")
+      // saved!
+	  
+	  console.log(User.db.name);
+	  User.findOne( {'profile.username' : 'john'},function (err, user) {
+		if (err) return handleError(err);
+		console.log(user.profile.username);
+		res.json(user);
+      })
+    };
+  }));
+  
+  // Create a new user that can be a student or teacher.
+  api.put('/newUser', wagner.invoke(function(User) {
+    return function(req, res) {
+
+	  var user = req.user
 	  user.save(function (err) {
 	  if (err) return handleError(err);
 	  console.log("student added!")

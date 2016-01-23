@@ -1,6 +1,11 @@
 exports.CounterController = function ($scope) {
 	$scope.counter = 0;
 }
+
+
+
+
+
 /*
 exports.AddToCartController = function($scope, $http, $user, $timeout) {
   $scope.addToCart = function(product) {
