@@ -36,6 +36,9 @@ exports.NavbarController = function ($scope,$http) {
   	$http.get('/api/v1/groups',
 	{params : {title: $scope.title, level : $scope.level, language : $scope.program_language}}).success(function(data){
         $scope.classData = data;
+		foreach(element in $scope.classData) {
+			element.startDate = moment(group.startDate).format('MM/DD/YYYY'); 
+		}
         console.log($scope.classData);
         $scope.searching = true;
     })

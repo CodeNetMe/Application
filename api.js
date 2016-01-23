@@ -161,6 +161,39 @@ module.exports = function(wagner) {
 
     };
   }));
+  
+  api.get('/newQuestion', wagner.invoke(function(Question,Lesson) {
+    return function(req, res) {
+		// change this to query by param username afterwards::::::
+	  Lesson.findOne( {_id : req.query._id},function (err, group) {
+		console.log("Found User: "+user.profile.username);
+	  if (err) {console.log (err);
+		return  
+	  }
+		console.log("Group of lesson TITLE: " + lesson.group.title);
+		var question = new Question({ mainSentence : req.query.mainSentence,
+		a : { sentence : req.query.aSentence, correct : aCorrect},
+		b : { sentence : req.query.bSentence, correct : bCorrect},
+		c : { sentence : req.query.cSentence, correct : cCorrect},
+		d : { sentence : req.query.aSentence, correct : dCorrect}
+		}
+		})
+		//var group = new Group({ title : "Expert Java", language : "Java", level : "Expert", 
+		//teacher : user, students : []
+		//})
+		lesson.save(function (err) {
+		if (err) {console.log (err);
+		return  
+	  }
+		console.log("group added!")
+		// saved!
+		res.send("Group Added!")
+      })
+      })
+
+    };
+  }));
+  
 
   return api;
 };
