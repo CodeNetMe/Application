@@ -3,7 +3,7 @@
 exports.CounterController = function ($scope,$http) {
 	$scope.counter = 0;
 	$scope.userdata = 0
-	$scope.searchUser = function(){
+	/*$scope.searchUser = function(){
       $scope.counter += 1;
 	  $http.
 	  get('/api/v1/user', {
@@ -13,6 +13,14 @@ exports.CounterController = function ($scope,$http) {
 		  $scope.userdata = data
 		  console.log("Data:" + $scope.userdata)
 	  })
+	}*/
+	$scope.searchUser = function() {
+		var dataObj = {test: "123"};
+		$http.put('/api/v1/newLesson', dataObj).
+		success(function(data){
+			console.log(data);
+		}
+		)
 	}
 }
 

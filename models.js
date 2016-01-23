@@ -16,12 +16,16 @@ module.exports = function(wagner) {
 	
   var Lesson =
     mongoose.model('Lesson', require('./lesson'), 'lessons');
+	
+  var Question =
+    mongoose.model('Question', require('./question'), 'questions');
 
   var models = {
     //Category: Category,
     User: User,
 	Group: Group,
-	Lesson: Lesson
+	Lesson: Lesson,
+	Question: Question
 	  
   };
 

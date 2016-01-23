@@ -16,12 +16,14 @@ module.exports = new mongoose.Schema({
 		type: mongoose.Schema.ObjectId, 
 		ref: 'Group',
 		required: true
-		}
-	
-}
+		},
+		
+	questions: {
+		type : [{type : mongoose.Schema.ObjectId, ref: 'Question'}]
+	}
 
 
-);
+});
 
 module.exports.set('toObject', { virtuals: true });
 module.exports.set('toJSON', { virtuals: true });

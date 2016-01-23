@@ -54,7 +54,7 @@ module.exports = function(wagner) {
     };
   }));
   
-  api.get('/group', wagner.invoke(function(Group) {
+  api.get('/groups', wagner.invoke(function(Group) {
 	console.log("Connected to group!")
     return function(req, res) {
 
@@ -69,6 +69,25 @@ module.exports = function(wagner) {
 		//console.log(user.profile.username);
 		//res.data = user.profile.username;
 		res.json(groups);
+      })
+    };
+  }));
+  
+  api.get('/group', wagner.invoke(function(Group) {
+	console.log("Connected to group!")
+    return function(req, res) {
+
+	  //var user = new User({ profile: {username:'john', password: '123'}});
+	  //user.save(function (err) {
+	  //if (err) return handleError(err);
+	  //console.log("student added!")
+      // saved!
+	  console.log(req.query.title + " " + req.query.level + " " + req.query.language )
+	  Group.findOne( {_id : req.query.id}, function (err, group) {
+		if (err) return handleError(err);
+		//console.log(user.profile.username);
+		//res.data = user.profile.username;
+		res.json(group);
       })
     };
   }));
