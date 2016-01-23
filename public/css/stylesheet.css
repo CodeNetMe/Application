@@ -47,3 +47,24 @@ body{
 .class-page{
 	
 }
+
+.class-page #author{
+	text-align:right;
+}
+
+ul #lessons{
+	margin:1%;
+}
+ul #lessons li div{
+	padding-top:10px;
+	padding-bottom: 10px;
+	display:block;
+	width:200px;
+	font-family:Verdana;
+	font-size:14px;
+	background-color:#75c1d6;
+	border:1px solid white;
+} 
+ul #lessons li div:hover{
+	background-color:#236476;
+}

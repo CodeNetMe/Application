@@ -1,3 +1,20 @@
+<!-- Template for a class page per group -->
+
 <div ng-controller="ClassController" class="class-page">
 	<h1>{{currentClass.title}}</h1>
+	<p id="author">{{currentClass.teacher.profile.name}}</p>
+
+	<!-- List of links to lessons-->
+	<ul>
+	<div id="lessons" ng-repeat="lesson in lessons track by $index">
+		<li>
+			<div>
+			{{lesson.title}}<br/>
+			{{lesson.date}}<br/>
+			</div>
+		</li>
+	</div>
+	</ul>
+	<!-- End of list of links to lessons-->
+
 </div>

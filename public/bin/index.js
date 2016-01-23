@@ -70,9 +70,15 @@ exports.LoginController = function ($scope,$http) {
 
 exports.ClassController = function($scope, $routeParams, $http){
 	console.log("ID: " + $routeParams.id)
+
   var id = encodeURIComponent($routeParams.id);
+
   $http.get('/api/v1/group', {params : {id: id}}).success(function(data){
     $scope.currentClass = data;
+  })
+
+  $http.get('/api/v1/lessons', {params: {group: $scope.currentClass}).function(data){
+    $scope.lessons = data;
   })
 
 
