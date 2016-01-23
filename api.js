@@ -61,8 +61,8 @@ module.exports = function(wagner) {
     };
   }));
 
-  
-  api.post('/newGroup', wagner.invoke(function(Group,User) {
+  // Try to fix this into a post later on, but for now just use get
+  api.get('/newGroup', wagner.invoke(function(Group,User) {
     return function(req, res) {
 		// change this to query by param username afterwards::::::
 	  User.findOne( {'profile.username' : "john"},function (err, user) {
@@ -70,12 +70,13 @@ module.exports = function(wagner) {
 	  if (err) {console.log (err);
 		return  
 	  }
-		//var group = new Group({ title : req.query.title, language : req.query.language, level : req.query.level, 
-		//teacher : user, students : []
-		//})
-		var group = new Group({ title : "Expert Java", language : "Java", level : "Expert", 
+		console.log("TITLE: " + req.query.title);
+		var group = new Group({ title : req.query.title, language : req.query.language, level : req.query.level, 
 		teacher : user, students : []
 		})
+		//var group = new Group({ title : "Expert Java", language : "Java", level : "Expert", 
+		//teacher : user, students : []
+		//})
 		group.save(function (err) {
 		if (err) {console.log (err);
 		return  

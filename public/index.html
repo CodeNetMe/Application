@@ -28,10 +28,11 @@
       <option value="Intermediate">Intermediate</option>
       <option value="Expert">Expert</option>
     </select>
-    <input id="searchbar" type="text" value="{{title}}">
+    <input id="searchbar" type="text" ng-model="title">
     <input type="button" value="Search" ng-click="search()">
 	<input type="button" value="New Group" ng-click="newGroup()">
 	<counter></counter>
+	The title is {{title}}
 	<a href="https://youtu.be/ANiIiXAqU_g"> Video</a>
   </div>
   <!--End Navbar-->

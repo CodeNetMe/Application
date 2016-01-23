@@ -26,14 +26,15 @@ exports.NavbarController = function ($scope,$http) {
 
   $scope.search = function(){
   	$http.get('/api/v1/group',
-	{params : { title: $scope.title ,level : $scope.level, language : $scope.program_language}}).success(function(data){
+	{params : {title: $scope.title, level : $scope.level, language : $scope.program_language}}).success(function(data){
         $scope.classData = data;
         console.log($scope.classData);
     })
     }
   $scope.newGroup = function(){
-  	$http.post('/api/v1/newGroup',
-	{params : { level : $scope.level, language : $scope.program_language}}).success(function(data){
+	  //try changing this into a post later on
+  	$http.get('/api/v1/newGroup',
+	{params : {'title': $scope.title, 'level' : $scope.level, 'language' : $scope.program_language}}).success(function(data){
         $scope.classData = data;
         console.log($scope.classData);
     })
