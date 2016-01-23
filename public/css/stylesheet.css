@@ -13,5 +13,19 @@ body{
 
 #searchbar{
 	font-size:14px;
-	right:10px;
+}
+
+/*Divs for groups when searching*/
+.group-details{
+	border:1px solid black;
+	float:right;
+	padding:20px;
+	height: 500px;
+	width: 500px;
+	text-align:center;
+
+}
+
+.group-details a{
+	font-size:20px;
 }
