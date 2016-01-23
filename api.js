@@ -82,7 +82,6 @@ module.exports = function(wagner) {
 	  //if (err) return handleError(err);
 	  //console.log("student added!")
       // saved!
-	  console.log(req.query.title + " " + req.query.level + " " + req.query.language )
 	  Group.findOne( {_id : req.query.id}, function (err, group) {
 		if (err) return handleError(err);
 		//console.log(user.profile.username);
