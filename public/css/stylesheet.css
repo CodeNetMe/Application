@@ -18,14 +18,26 @@ body{
 /*Divs for groups when searching*/
 .group-details{
 	border:1px solid black;
-	float:right;
+	float:left;
 	padding:20px;
 	height: 200px;
 	width: 100px;
 	text-align:center;
+	margin: 30px;
 
 }
 
 .group-details a{
 	font-size:20px;
+}
+
+.group-details img{
+	width:80px;
+	height:80px;
+	background-color: black;
+}
+
+/* Class Page */
+.class-page{
+	
 }

@@ -1,18 +1,16 @@
 <div class="group-search">
-  {{classData.length}}
-  <div class="crumbs">
 
-    <div class="crumb" ng-repeat="group in classData track by $index">
-      <a ng-href="#/group/{{group.title}}">
+    <div class="group-details" ng-repeat="group in classData track by $index">
+      <a ng-href="#/group/{{group._id}}">
         {{group.title}}
       </a>
-      <div class="group-details">
+      <img />
+      <div class="">
         {{ group.language }}<br/>
         {{ group.level }}<br/>
         {{ group.startDate }}<br/>
       </div>
     </div>
-  </div>
 
 </div>
 
