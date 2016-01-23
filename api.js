@@ -73,6 +73,24 @@ module.exports = function(wagner) {
     };
   }));
   
+  api.get('/lessons', wagner.invoke(function(Lesson) {
+	console.log("Connected to group!")
+    return function(req, res) {
+
+	  //var user = new User({ profile: {username:'john', password: '123'}});
+	  //user.save(function (err) {
+	  //if (err) return handleError(err);
+	  //console.log("student added!")
+      // saved!
+	  Lesson.find( {group : req.query.group}).lean().exec(function (err, lessons) {
+		if (err) return handleError(err);
+		//console.log(user.profile.username);
+		//res.data = user.profile.username;
+		res.json(lessons);
+      })
+    };
+  }));
+  
   api.get('/group', wagner.invoke(function(Group,User) {
 	console.log("Connected to group!!!!!!!!!!!!!!!!!!!!!!!!!!!")
     return function(req, res) {
@@ -94,13 +112,14 @@ module.exports = function(wagner) {
   }));
   
   // Create a new user that can be a student or teacher.
-  api.post('/newUser', wagner.invoke(function(User) {
+  api.get('/newUser', wagner.invoke(function(User) {
     return function(req, res) {
 
-	  var user = new User({ profile: {username: req.body.username, password: req.body.password}});
+	  var user = new User({ profile: {username: req.query.username, password: req.query.password}});
 	  user.save(function (err) {
 	  if (err) return handleError(err);
 	  console.log("user added!")
+	  res.send("User Added")
       // saved!
       })
     };
