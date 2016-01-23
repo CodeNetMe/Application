@@ -33,7 +33,7 @@ exports.NavbarController = function ($scope,$http) {
 
 
   $scope.search = function(){
-    $location.path('/search/' + $scope.title + '/' + $scope.level)
+    $location.path('/search/' + $scope.language + '/' + $scope.level)
   	$http.get('/api/v1/groups',
 	{params : {title: $scope.title, level : $scope.level, language : $scope.program_language}}).success(function(data){
         $scope.classData = data;
