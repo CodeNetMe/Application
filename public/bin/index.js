@@ -12,8 +12,9 @@ exports.CounterController = function ($scope,$http) {
 }
 
 
-
-
+exports.NavbarController = function ($scope,$http) {
+	
+}
 
 
 
