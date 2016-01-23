@@ -68,7 +68,7 @@ module.exports = function(wagner) {
 		if (err) return handleError(err);
 		//console.log(user.profile.username);
 		//res.data = user.profile.username;
-		res.json(JSON.stringify(groups));
+		res.json(groups);
       })
     };
   }));

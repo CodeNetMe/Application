@@ -29,6 +29,7 @@ exports.NavbarController = function ($scope,$http) {
 	{params : {title: $scope.title, level : $scope.level, language : $scope.program_language}}).success(function(data){
         $scope.classData = data;
         console.log($scope.classData);
+		 console.log($scope.classData[0]);
         $scope.searching = true;
     })
   }
