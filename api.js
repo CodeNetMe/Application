@@ -20,11 +20,10 @@ module.exports = function(wagner) {
 	  //if (err) return handleError(err);
 	  //console.log("student added!")
       // saved!
-	  
-	  console.log(User.db.name);
 	  User.findOne( {'profile.username' : 'john'},function (err, user) {
 		if (err) return handleError(err);
-		console.log(user.profile.username);
+		//console.log(user.profile.username);
+		//res.data = user.profile.username;
 		res.json(user);
       })
     };
