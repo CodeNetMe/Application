@@ -41,6 +41,23 @@ exports.NavbarController = function ($scope,$http) {
     }
 }
 
+exports.LoginController = function ($scope,$http) {
+	// fix this afterwards to be more difficult to hack.
+	$scope.loggedIn = false;
+	$scope.username = "Username";
+	$scope.password = "Password";
+	$scope.login = function(){
+	  $http.
+	  get('/api/v1/login', {
+	    params: { username: $scope.username, password : $scope.password}
+		}).success(function(data) {
+		  
+		  $scope.loggedIn = data.loggedIn
+		  console.log("Data:" + $scope.loggedIn)
+	  })
+	}
+}
+
 
 
 

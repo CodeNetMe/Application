@@ -20,11 +20,37 @@ module.exports = function(wagner) {
 	  //if (err) return handleError(err);
 	  //console.log("student added!")
       // saved!
-	  User.findOne( {'profile.username' : req.query.username},function (err, user) {
+	  
+	  
+	  // VERY UNSECURE, NEED TO FIND WAY OF ENCODING THIS PASSWORD AFTERWARDS
+	  User.findOne( {'profile.username' : req.query.username, 'profile.password' : req.query.password},function (err, user) {
 		if (err) return handleError(err);
 		console.log(user.profile.username);
 		//res.data = user.profile.username;
 		res.json(user);
+      })
+    };
+  }));
+  
+   api.get('/login', wagner.invoke(function(User) {
+    return function(req, res) {
+
+	  //var user = new User({ profile: {username:'john', password: '123'}});
+	  //user.save(function (err) {
+	  //if (err) return handleError(err);
+	  //console.log("student added!")
+      // saved!
+	  
+	  
+	  // VERY UNSECURE, NEED TO FIND WAY OF ENCODING THIS PASSWORD AFTERWARDS
+	  User.findOne( {'profile.username' : req.query.username, 'profile.password' : req.query.password},function (err, user) {
+		if (err) return handleError(err);
+		//res.data = user.profile.username;
+		if (user != undefined) {
+		res.json({ loggedIn : true});
+		} else {
+			res.json({ loggedIn : false});
+		}
       })
     };
   }));
