@@ -31,7 +31,7 @@ module.exports = new mongoose.Schema({
 		type : date,
 		default Date.now,
 		required : true
-	},
+	}
 	
 	
 }
