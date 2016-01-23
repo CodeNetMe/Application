@@ -2,11 +2,12 @@
   {{classData.length}}
   <div class="crumbs">
 
-    <div class="crumb" ng-repeat="group in classData track by $index">
+    <div class="group-details" ng-repeat="group in classData track by $index">
       <a ng-href="#/group/{{group.title}}">
         {{group.title}}
       </a>
-      <div class="group-details">
+      <img />
+      <div class="">
         {{ group.language }}<br/>
         {{ group.level }}<br/>
         {{ group.startDate }}<br/>

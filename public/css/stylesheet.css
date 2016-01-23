@@ -29,3 +29,9 @@ body{
 .group-details a{
 	font-size:20px;
 }
+
+.group-details img{
+	width:80px;
+	height:80px;
+	background-color: black;
+}

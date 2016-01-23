@@ -27,37 +27,41 @@
   
 
   <!--Navbar-->
-  <div id="navbar" ng-controller="NavbarController">
-    <select ng-model="program_language">
-      <option value="">Language (Any)</option>
-      <option value="Java">Java</option >
-      <option value="Python">Python</option>
-    </select>
-    <select ng-model="level">
-      <option value="">Level (Any)</option>
-      <option value="Beginner">Beginner</option>
-      <option value="Intermediate">Intermediate</option>
-      <option value="Expert">Expert</option>
-    </select>
-    <input id="searchbar" type="text" ng-model="title">
-    <input type="button" value="Search" ng-click="search()">
-	<input type="button" value="New Group" ng-click="newGroup()">
-	<counter></counter>
-	The title is {{title}}
-	<a href="https://youtu.be/ANiIiXAqU_g"> Video</a>
-	<div ng-controller="LoginController">
-  <input id="searchbar" type="text" ng-model="username">
-  <input id="searchbar" type="text" ng-model="password">
-  <input type="button" value="Login" ng-click="login()">
-  <datetimepicker data-ng-model="data.date"></datetimepicker>
-  	</div>
-  <!--End Navbar-->
+  <div ng-controller="NavbarController">
+    <div id="navbar">
+      <select ng-model="program_language">
+        <option value="">Language (Any)</option>
+        <option value="Java">Java</option >
+        <option value="Python">Python</option>
+      </select>
+      <select ng-model="level">
+        <option value="">Level (Any)</option>
+        <option value="Beginner">Beginner</option>
+        <option value="Intermediate">Intermediate</option>
+        <option value="Expert">Expert</option>
+      </select>
+      <input id="searchbar" type="text" ng-model="title">
+      <input type="button" value="Search" ng-click="search()">
+  	<input type="button" value="New Group" ng-click="newGroup()">
+  	<counter></counter>
+  	The title is {{title}}
+  	<a href="https://youtu.be/ANiIiXAqU_g"> Video</a>
+
+  	<div ng-controller="LoginController">
+      <input id="searchbar" type="text" ng-model="username">
+      <input id="searchbar" type="text" ng-model="password">
+      <input type="button" value="Login" ng-click="login()">
+      <datetimepicker data-ng-model="data.date"></datetimepicker>
+    </div>
+    
+    </div>
+    <!--End Navbar-->
 
   	<!--Search Results/Class area -->
   	<div search-results ng-show="searching"></div>
+    <div class-page ng-show="onClass"></div>
 	
   </div>
-  <search-results></search-results>
 
 
   </body>
