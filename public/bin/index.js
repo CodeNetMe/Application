@@ -274,7 +274,7 @@ _.each(services, function(factory, name) {
   components.factory(name, factory);
 });
 
-var app = angular.module('cn-test', ['cn-test.components', 'ngRoute']);
+var app = angular.module('cn-test', ['cn-test.components', 'ngRoute','ui.bootstrap.datetimepicker']);
 
 app.config(function($routeProvider) {
   $routeProvider.

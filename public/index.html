@@ -7,9 +7,20 @@
       src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular-route.js">
     </script>
     <script type="text/javascript" src="/public/bin/index.js"></script>
+	
+	<script type="text/javascript" src="node_modules/moment/moment.js"></script>
+	<script type="text/javascript" src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
+	<script type="text/javascript" src="node_modules/angular/angular.js"></script>
+	<script type="text/javascript" src="node_modules/angular-bootstrap-datetimepicker/src/js/datetimepicker.js"></script>
 
 
     <link rel="stylesheet" type="text/css" href="css/stylesheet.css" />
+	
+	
+	<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+	<link rel="stylesheet" href="node_modules/angular-bootstrap-datetimepicker/src/css/datetimepicker.css"/>
+	
+	<!-- MAKE SURE YOU HAVE THE RIGHT DEPENDANCIES FOR THE CALLENDAR>
 
 <!--     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" /> -->
   </head>
@@ -39,6 +50,7 @@
   <input id="searchbar" type="text" ng-model="username">
   <input id="searchbar" type="text" ng-model="password">
   <input type="button" value="Login" ng-click="login()">
+  <datetimepicker data-ng-model="data.date"></datetimepicker>
   	</div>
   </div>
   <!--End Navbar-->

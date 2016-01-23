@@ -28,8 +28,8 @@ module.exports = new mongoose.Schema({
 	},
 	
 	startDate: {
-		type : date,
-		default Date.now,
+		type : Date,
+		default : Date.now,
 		required : true
 	}
 	
