@@ -8,10 +8,12 @@
 	<ul>
 	<div id="lessons" ng-repeat="lesson in lessons track by $index">
 		<li>
+			<a href={{lesson.link}}
 			<div>
 			{{lesson.title}}<br/>
 			{{lesson.date}}<br/>
 			</div>
+			</a>
 		</li>
 	</div>
 	</ul>
