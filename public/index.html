@@ -53,14 +53,14 @@
       <input type="button" value="Login" ng-click="login()">
       <datetimepicker data-ng-model="data.date"></datetimepicker>
     </div>
-    
+
     </div>
     <!--End Navbar-->
 
   	<!--Search Results/Class area -->
+    <div ng-view>
   	<div search-results ng-show="searching"></div>
-    <div class-page ng-show="onClass"></div>
-	
+	   </div>
   </div>
 
 

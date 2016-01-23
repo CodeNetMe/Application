@@ -25,11 +25,10 @@ exports.NavbarController = function ($scope,$http) {
 
 
   $scope.search = function(){
-  	$http.get('/api/v1/group',
+  	$http.get('/api/v1/groups',
 	{params : {title: $scope.title, level : $scope.level, language : $scope.program_language}}).success(function(data){
         $scope.classData = data;
         console.log($scope.classData);
-		 console.log($scope.classData[0]);
         $scope.searching = true;
     })
   }
@@ -58,6 +57,15 @@ exports.LoginController = function ($scope,$http) {
 		  console.log("Data:" + $scope.loggedIn)
 	  })
 	}
+}
+
+exports.ClassController = function($scope, $routeParams, $http){
+  var id = encodeURIComponent($routeParams.id);
+  $http.get('/api/v1/group', {params : {_id: encoded}}).success(function(data){
+    $scope.currentClass = data;
+  })
+
+
 }
 
 
@@ -218,51 +226,16 @@ exports.searchResults = function(){
     controller: 'NavbarController',
     templateUrl: '/public/templates/group-search.html'
   }
+}
 
+exports.classPage = function(){
+  return{
+    controller:'ClassController',
+    templateUrl:'/public/templates/class-page.html'
+  }
 }
 	
 
-exports.addToCart = function() {
-  return {
-    controller: 'AddToCartController',
-    templateUrl: '/B-examples/templates/add_to_cart.html'
-  };
-};
-
-exports.categoryProducts = function() {
-  return {
-    controller: 'CategoryProductsController',
-    templateUrl: '/B-examples/templates/category_products.html'
-  }
-};
-
-exports.categoryTree = function() {
-  return {
-    controller: 'CategoryTreeController',
-    templateUrl: '/B-examples/templates/category_tree.html'
-  }
-};
-
-exports.checkout = function() {
-  return {
-    controller: 'CheckoutController',
-    templateUrl: '/B-examples/templates/checkout.html'
-  };
-};
-
-exports.navBar = function() {
-  return {
-    controller: 'NavBarController',
-    templateUrl: '/B-examples/templates/nav_bar.html'
-  };
-};
-
-exports.productDetails = function() {
-  return {
-    controller: 'ProductDetailsController',
-    templateUrl: '/B-examples/templates/product_details.html'
-  };
-};
 
 },{}],3:[function(require,module,exports){
 var controllers = require('./controllers');
@@ -288,8 +261,8 @@ var app = angular.module('cn-test', ['cn-test.components', 'ngRoute','ui.bootstr
 
 app.config(function($routeProvider) {
   $routeProvider.
-    when('/category/:category', {
-      templateUrl: '/B-examples/templates/category_view.html'
+    when('#/group/:id', {
+      template: '<class-page></class-page>' 
     }).
     when('/checkout', {
       template: '<checkout></checkout>'
