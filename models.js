@@ -13,11 +13,15 @@ module.exports = function(wagner) {
 	
   var Group =
     mongoose.model('Group', require('./group'), 'groups');
+	
+  var Lesson =
+    mongoose.model('Lesson', require('./lesson'), 'lessons');
 
   var models = {
     //Category: Category,
     User: User,
-	Group: Group
+	Group: Group,
+	Lesson: Lesson
 	  
   };
 

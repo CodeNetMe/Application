@@ -116,6 +116,35 @@ module.exports = function(wagner) {
     };
   }));
   
+  api.get('/newLesson', wagner.invoke(function(Lesson,Group) {
+    return function(req, res) {
+		// change this to query by param username afterwards::::::
+	  Group.findOne( {_id : req.query._id},function (err, group) {
+		console.log("Found User: "+user.profile.username);
+	  if (err) {console.log (err);
+		return  
+	  }
+		console.log("TITLE: " + group.title);
+		var lesson = new Lesson({ date : req.query.date,
+		group : group, 
+		link : req.query.link
+		})
+		//var group = new Group({ title : "Expert Java", language : "Java", level : "Expert", 
+		//teacher : user, students : []
+		//})
+		lesson.save(function (err) {
+		if (err) {console.log (err);
+		return  
+	  }
+		console.log("group added!")
+		// saved!
+		res.send("Group Added!")
+      })
+      })
+
+    };
+  }));
+  
   
   api.put('/me/cart', wagner.invoke(function(User) {
     return function(req, res) {
