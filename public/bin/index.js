@@ -110,6 +110,19 @@ exports.NewQuestionController = function($scope, $http) {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 exports.AddToCartController = function($scope, $http, $user, $timeout) {
   $scope.addToCart = function(product) {
     var obj = { product: product._id, quantity: 1 };

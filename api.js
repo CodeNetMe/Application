@@ -115,6 +115,12 @@ module.exports = function(wagner) {
   api.get('/newUser', wagner.invoke(function(User) {
     return function(req, res) {
 
+		User.findOne( {'profile.username' : req.query.username},function (err, user) { 
+			if (user!=undefined) {
+				res.json({userTaken : "Username Taken"})
+			}
+		})
+	
 	  var user = new User({ profile: {username: req.query.username, password: req.query.password}});
 	  user.save(function (err) {
 	  if (err) return handleError(err);
