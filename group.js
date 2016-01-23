@@ -8,21 +8,27 @@ module.exports = new mongoose.Schema({
 		lowercase: true,
 		index: { unique: true }
 	},
-	category: {
+	language: {
 		type: String,
 		required: true
 	},
-	difficulty: {
+	level: {
 		type: String,
 		required: true
 	},
 	
 	teacher: {
 		type: mongoose.Schema.ObjectId, 
-		ref: 'User'} 
+		ref: 'User',
+		required: true
+		},
 		
+	students: {
+		type : [{type : mongoose.Schema.ObjectId, ref: 'User'}]
 	}
 	
+	
+}
 
 
 );

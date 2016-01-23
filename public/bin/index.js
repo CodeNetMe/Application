@@ -3,28 +3,41 @@
 exports.CounterController = function ($scope,$http) {
 	$scope.counter = 0;
 	$scope.userdata = 0
-	$http.
+	$scope.searchUser = function(){
+      $scope.counter += 1;
+	  $http.
 	  get('/api/v1/user', {
-    params: { username: "john" }
-}).success(function(data) {
+	    params: { username: "john" }
+		}).success(function(data) {
 		  
 		  $scope.userdata = data
 		  console.log("Data:" + $scope.userdata)
 	  })
+	}
 }
 
 
 exports.NavbarController = function ($scope,$http) {
+	
+  $scope.title = "";
+  $scope.program_language = "";
+  $scope.level = "";
+
 
   $scope.search = function(){
-  	$http.get('api/v1/class', {
-      params: { language: $scope.program_language, level: $scope.level }
-    }).success(function(data){
+  	$http.get('/api/v1/group',
+	{params : { title: $scope.title ,level : $scope.level, language : $scope.program_language}}).success(function(data){
         $scope.classData = data;
         console.log($scope.classData);
     })
     }
-  }
+  $scope.newGroup = function(){
+  	$http.post('/api/v1/newGroup',
+	{params : { level : $scope.level, language : $scope.program_language}}).success(function(data){
+        $scope.classData = data;
+        console.log($scope.classData);
+    })
+    }
 }
 
 

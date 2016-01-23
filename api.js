@@ -11,7 +11,7 @@ module.exports = function(wagner) {
   api.use(bodyparser.json());
   
   
-  //Change this to a put!!!!!!
+
   api.get('/user', wagner.invoke(function(User) {
     return function(req, res) {
 
@@ -22,14 +22,15 @@ module.exports = function(wagner) {
       // saved!
 	  User.findOne( {'profile.username' : req.query.username},function (err, user) {
 		if (err) return handleError(err);
-		//console.log(user.profile.username);
+		console.log(user.profile.username);
 		//res.data = user.profile.username;
 		res.json(user);
       })
     };
   }));
   
-  api.get('/class', wagner.invoke(function(Class) {
+  api.get('/group', wagner.invoke(function(Group) {
+	console.log("Connected to group!")
     return function(req, res) {
 
 	  //var user = new User({ profile: {username:'john', password: '123'}});
@@ -37,11 +38,12 @@ module.exports = function(wagner) {
 	  //if (err) return handleError(err);
 	  //console.log("student added!")
       // saved!
-	  Class.find( {'difficulty' : req.query.difficulty, ''},function (err, user) {
+	  console.log(req.query.title + " " + req.query.level + " " + req.query.language )
+	  Group.findOne( {'level' : req.query.level, 'language' : req.query.language},function (err, group) {
 		if (err) return handleError(err);
 		//console.log(user.profile.username);
 		//res.data = user.profile.username;
-		res.json(user);
+		res.json(group);
       })
     };
   }));
@@ -59,6 +61,35 @@ module.exports = function(wagner) {
     };
   }));
 
+  
+  api.post('/newGroup', wagner.invoke(function(Group,User) {
+    return function(req, res) {
+		// change this to query by param username afterwards::::::
+	  User.findOne( {'profile.username' : "john"},function (err, user) {
+		console.log("Found User: "+user.profile.username);
+	  if (err) {console.log (err);
+		return  
+	  }
+		//var group = new Group({ title : req.query.title, language : req.query.language, level : req.query.level, 
+		//teacher : user, students : []
+		//})
+		var group = new Group({ title : "Expert Java", language : "Java", level : "Expert", 
+		teacher : user, students : []
+		})
+		group.save(function (err) {
+		if (err) {console.log (err);
+		return  
+	  }
+		console.log("group added!")
+		// saved!
+		res.send("Group Added!")
+      })
+      })
+
+    };
+  }));
+  
+  
   api.put('/me/cart', wagner.invoke(function(User) {
     return function(req, res) {
       try {

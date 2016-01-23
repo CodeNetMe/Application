@@ -17,7 +17,7 @@
 
   <!--Navbar-->
   <div id="navbar" ng-controller="NavbarController">
-    <select ng-model="language">
+    <select ng-model="program_language">
       <option value="">Language (Any)</option>
       <option value="Java">Java</option >
       <option value="Python">Python</option>
@@ -28,9 +28,11 @@
       <option value="Intermediate">Intermediate</option>
       <option value="Expert">Expert</option>
     </select>
-    <input id="searchbar" type="text" value="Search for Classes">
-    <input type="button" value="Search">
+    <input id="searchbar" type="text" value="{{title}}">
+    <input type="button" value="Search" ng-click="search()">
+	<input type="button" value="New Group" ng-click="newGroup()">
 	<counter></counter>
+	<a href="https://youtu.be/ANiIiXAqU_g"> Video</a>
   </div>
   <!--End Navbar-->
   
