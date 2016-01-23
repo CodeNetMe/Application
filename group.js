@@ -25,7 +25,13 @@ module.exports = new mongoose.Schema({
 		
 	students: {
 		type : [{type : mongoose.Schema.ObjectId, ref: 'User'}]
-	}
+	},
+	
+	startDate: {
+		type : date,
+		default Date.now,
+		required : true
+	},
 	
 	
 }

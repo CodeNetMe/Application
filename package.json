@@ -9,7 +9,8 @@
     "passport-facebook": "2.0.0",
     "superagent": "1.2.0",
     "underscore": "1.5.2",
-    "wagner-core": "0.1.0"
+    "wagner-core": "0.1.0",
+	"moment": "2.11.1"
   },
   "devDependencies": {
     "gulp": "3.8.11",
