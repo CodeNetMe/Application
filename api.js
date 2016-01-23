@@ -73,7 +73,7 @@ module.exports = function(wagner) {
     };
   }));
   
-  api.get('/group', wagner.invoke(function(Group) {
+  api.get('/group', wagner.invoke(function(Group,User) {
 	console.log("Connected to group!!!!!!!!!!!!!!!!!!!!!!!!!!!")
     return function(req, res) {
 
@@ -86,7 +86,9 @@ module.exports = function(wagner) {
 		if (err) return handleError(err);
 		//console.log(user.profile.username);
 		//res.data = user.profile.username;
-		res.json(group);
+		User.findOne( {_id : group.teacher}, function (err, user) {
+		res.json({teacher : user, group : group});
+		})
       })
     };
   }));
