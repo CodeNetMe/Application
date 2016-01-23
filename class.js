@@ -15,17 +15,15 @@ module.exports = new mongoose.Schema({
 	difficulty: {
 		type: String,
 		required: true
-	}
+	},
 	
 	teacher: {
-		type: Schema.ObjectId, 
+		type: mongoose.Schema.ObjectId, 
 		ref: 'User'} 
 		
 	}
 	
-	students: {
-		[{type: Schema.ObjectId, ref: 'User'}]
-	}
+
 
 );
 
