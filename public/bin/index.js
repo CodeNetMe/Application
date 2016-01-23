@@ -74,11 +74,16 @@ exports.ClassController = function($scope, $routeParams, $http){
   var id = encodeURIComponent($routeParams.id);
 
   $http.get('/api/v1/group', {params : {id: id}}).success(function(data){
-    $scope.currentClass = data;
+    $scope.currentClass = data.group;
+    $scope.teacher = data.teacher;
   })
+
+
 
   $http.get('/api/v1/lessons', {params: {group: $scope.currentClass}}).success(function(data){
     $scope.lessons = data;
+
+
   })
 
 
@@ -97,6 +102,21 @@ exports.NewQuestionController = function($scope, $http) {
 	$scope.dCorrect = false
 	
 	
+}
+
+exports.SignupController = function($scope, $http, $location) {
+  $scope.errormsg = "";
+  $scope.signUp = function($scope, $http){
+
+    $http.get('/api/v1/newUser', {params: { username: $scope.username, password: $scope.password}}).success(function(data){
+      if (data.userTaken){
+        $scope.errormsg = "User already exists"
+      }
+      else{
+        $location.path('/');
+      }
+    })
+  }
 }
 
 
@@ -262,6 +282,13 @@ exports.classPage = function(){
     templateUrl:'/public/templates/class-page.html'
   }
 }
+
+exports.signUp = funtion(){
+  return{
+    controller:'SignupController',
+    templateUrl: 'sign-up.html'
+  }
+}
 	
 
 
@@ -295,8 +322,8 @@ app.config(function($routeProvider) {
     when('/search/:program_language/:level', {
       template: '<search-results></search-results>'
     }).
-    when('/product/:id', {
-      template: '<product-details></product-details>'
+    when('/sign-up', {
+      template: '<sign-up></sign-up>'
     });
 });
 
