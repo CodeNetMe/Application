@@ -15,12 +15,15 @@ exports.CounterController = function ($scope,$http) {
 
 
 exports.NavbarController = function ($scope,$http) {
-	$http.get('api/v1/class', {
-    params: { language: $scope.program_language, level: $scope.level }
-  }).success(function(data){
-      $scope.classData = data;
-      console.log($scope.classData);
-  })
+
+  $scope.search = function(){
+  	$http.get('api/v1/class', {
+      params: { language: $scope.program_language, level: $scope.level }
+    }).success(function(data){
+        $scope.classData = data;
+        console.log($scope.classData);
+    })
+    }
   }
 }
 
