@@ -25,7 +25,7 @@ exports.CounterController = function ($scope,$http) {
 }
 
 
-exports.NavbarController = function ($scope,$http) {
+exports.NavbarController = function ($scope,$http,$location) {
 	
   $scope.title = "";
   $scope.program_language = "";
@@ -33,13 +33,11 @@ exports.NavbarController = function ($scope,$http) {
 
 
   $scope.search = function(){
-    $location.path('/search/' + $scope.language + '/' + $scope.level)
+    $location.path('/search/' + $scope.program_language + '/' + $scope.level)
   	$http.get('/api/v1/groups',
 	{params : {title: $scope.title, level : $scope.level, language : $scope.program_language}}).success(function(data){
         $scope.classData = data;
-		foreach(element in $scope.classData) {
-			element.startDate = moment(group.startDate).format('MM/DD/YYYY'); 
-		}
+
         console.log($scope.classData);
     })
   }
@@ -71,8 +69,9 @@ exports.LoginController = function ($scope,$http) {
 }
 
 exports.ClassController = function($scope, $routeParams, $http){
+	console.log("ID: " + $routeParams.id)
   var id = encodeURIComponent($routeParams.id);
-  $http.get('/api/v1/group', {params : {_id: encoded}}).success(function(data){
+  $http.get('/api/v1/group', {params : {id: id}}).success(function(data){
     $scope.currentClass = data;
   })
 
@@ -80,7 +79,19 @@ exports.ClassController = function($scope, $routeParams, $http){
 }
 
 
-
+exports.NewQuestionController = function($scope, $http) {
+	$scope.mainSentence = ""
+	$scope.aSentence = ""
+	$scope.aCorrect = false
+	$scope.bSentence = ""
+	$scope.bCorrect = false
+	$scope.cSentence = ""
+	$scope.cCorrect = false
+	$scope.dSentence = ""
+	$scope.dCorrect = false
+	
+	
+}
 
 
 
@@ -272,10 +283,10 @@ var app = angular.module('cn-test', ['cn-test.components', 'ngRoute','ui.bootstr
 
 app.config(function($routeProvider) {
   $routeProvider.
-    when('#/group/:id', {
+    when('/id/:id', {
       template: '<class-page></class-page>' 
     }).
-    when('#/search/:program_language/:level', {
+    when('/search/:program_language/:level', {
       template: '<search-results></search-results>'
     }).
     when('/product/:id', {

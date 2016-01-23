@@ -18,10 +18,9 @@ body{
 /*Divs for groups when searching*/
 
 .group-search{
-	display : block
+	display : block;
 }
 .group-details{
-	display: inline-block;
 	background-color: #d6d6c2;
 	float:left;
 	padding:20px;

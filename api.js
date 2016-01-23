@@ -74,7 +74,7 @@ module.exports = function(wagner) {
   }));
   
   api.get('/group', wagner.invoke(function(Group) {
-	console.log("Connected to group!")
+	console.log("Connected to group!!!!!!!!!!!!!!!!!!!!!!!!!!!")
     return function(req, res) {
 
 	  //var user = new User({ profile: {username:'john', password: '123'}});
@@ -177,7 +177,7 @@ module.exports = function(wagner) {
 		c : { sentence : req.query.cSentence, correct : cCorrect},
 		d : { sentence : req.query.aSentence, correct : dCorrect}
 		}
-		})
+		)
 		//var group = new Group({ title : "Expert Java", language : "Java", level : "Expert", 
 		//teacher : user, students : []
 		//})
