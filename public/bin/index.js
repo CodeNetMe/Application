@@ -75,7 +75,8 @@ exports.ClassController = function($scope, $routeParams, $http){
 
   $http.get('/api/v1/group', {params : {id: id}}).success(function(data){
     $scope.currentClass = data.group;
-    $scope.teacher = data.teacher;
+	$scope.teacher = data.teacher;
+	console.log($scope.currentClass);
   })
 
 
@@ -118,6 +119,19 @@ exports.SignupController = function($scope, $http, $location) {
     })
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
