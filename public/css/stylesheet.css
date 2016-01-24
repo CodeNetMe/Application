@@ -5,6 +5,9 @@ body{
 	background-image: url(http://www.channelnomics.com/IMG/639/287639/connectivity-global-network.jpg);
 	background-size:100% 100%;
 }
+#loginUsername span{
+	color:white;
+}
 
 #navbar{
 	width:100%;
@@ -28,7 +31,7 @@ body{
 	width: 50%;
 	margin: auto;
 	padding: 0px;
-	padding-left: 50px;
+	padding-left: 90px;
 }
 
 /*Divs for groups when searching*/
@@ -59,9 +62,20 @@ body{
 	background-color: black;
 }
 
+#signUpForm {
+	background-color:white;
+	padding:20px 50px 500px 50px;
+	width:92%;
+	margin-left:4%;
+	margin-right:4%;
+}
 /* Class Page */
 .class-page{
 	background-color:white;
+	padding:20px 50px 500px 50px;
+	width:92%;
+	margin-left:4%;
+	margin-right:4%;
 }
 
 .class-page #author{
@@ -78,6 +92,7 @@ body{
 
 .class-page ul #lessons li a div{
 	padding-top:10px;
+	margin-bottom: 2px;
 	padding-bottom: 10px;
 	display: block;
 	width: 400px;

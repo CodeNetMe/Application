@@ -40,6 +40,22 @@ exports.NavbarController = function ($scope,$http,$location,Scopes) {
         console.log($scope.classData);
     })
   }
+  
+  $scope.gotoGroup = function(teacherID,groupID) {
+	  if (Scopes.get("LoginController").user != undefined) {
+		  if (Scopes.get("LoginController").user._id == teacherID) {
+		  $location.path("/id/" +  groupID + "/teacher/");
+		  
+		} else {
+		  $location.path("/id/" + groupID + "/student/")
+	  }
+	  }
+	    else {
+		  $location.path("/id/" + groupID + "/student/")
+	  }
+  }
+  
+  
   $scope.newGroupError = ""
   $scope.newGroup = function(){
 	  //try changing this into a post later on
@@ -49,6 +65,8 @@ exports.NavbarController = function ($scope,$http,$location,Scopes) {
 	{params : {'title': $scope.title, 'level' : $scope.level, 'language' : $scope.program_language, userID: Scopes.get("LoginController").user._id}}).success(function(data){
         $scope.classData = data;
         console.log($scope.classData);
+		console.log($scope.classData._id)
+		$location.path("/id/" + data._id + "/teacher/")
 	})} else {
 		$scope.newGroupError = "Not Logged In"
 		console.log("Not Logged In!!!!")
@@ -74,6 +92,10 @@ exports.LoginController = function ($scope,$http, Scopes) {
 		  console.log(data);
 		  console.log($scope.user);
 	  })
+	}
+	$scope.logout = function() {
+		$scope.user = undefined;
+		$scope.loggedIn = false;
 	}
 }
 
@@ -213,9 +235,18 @@ exports.searchResults = function(){
 exports.classPage = function(){
   return{
     controller:'ClassController',
+    templateUrl:'/public/templates/class-page.html'
+  }
+}
+
+exports.teacherPage = function(){
+  return{
+    controller:'ClassController',
     templateUrl:'/public/templates/teacher-class.html'
   }
 }
+
+
 
 exports.signUp = function(){
   return{
@@ -271,7 +302,10 @@ app.factory('Scopes', function ($rootScope) {
 
 app.config(function($routeProvider) {
   $routeProvider.
-    when('/id/:id', {
+    when('/id/:id/teacher/', {
+      template: '<teacher-page></teacher-page>' 
+    }).
+	when('/id/:id/student/', {
       template: '<class-page></class-page>' 
     }).
     when('/search/:program_language/:level', {

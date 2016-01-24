@@ -2,9 +2,10 @@
 
 <div ng-controller="ClassController" class="class-page">
 	<h1>{{currentClass.title}}</h1>
-	<p id="author">{{teacher.profile.username}}</p>
+	<p id="author">Teacher: {{teacher.profile.username}}</p>
 
 	<!-- List of links to lessons-->
+	<h2>Lessons</h2>
 	<ul>
 	<div id="lessons" ng-repeat="lsn in lessons track by $index">
 		<li>
@@ -18,7 +19,7 @@
 	</div>
 	</ul>
 	<!-- End of list of links to lessons-->
-
+	
  	<div id="questions">
 		<div ng-repeat="question in questions track by $index">
 		<p>{{ question.mainSentence }}</p>

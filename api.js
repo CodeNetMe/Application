@@ -64,7 +64,14 @@ module.exports = function(wagner) {
 	  //console.log("student added!")
       // saved!
 	  console.log(req.query.title + " " + req.query.level + " " + req.query.language )
-	  Group.find( {'level' : req.query.level, 'language' : req.query.language}).lean().exec(function (err, groups) {
+	  query = {}
+	  if (req.query.level != "") {
+		  query.level = req.query.level
+	  }
+	  if (req.query.language != "") {
+		  query.language = req.query.language
+	  }
+	  Group.find( query ).lean().exec(function (err, groups) {
 		if (err) return handleError(err);
 		//console.log(user.profile.username);
 		//res.data = user.profile.username;

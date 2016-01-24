@@ -1,14 +1,14 @@
-<!-- HTML template to show search results when searching for groups -->
+<!-- HTML template to show search results when searching for groups /public/#/id/{{group._id}}-->
 
 <div class="group-search">
     <div class="group-details" ng-repeat="group in classData track by $index">
-      <a ng-href="/public/#/id/{{group._id}}">
+      <a ng-click="gotoGroup(group.teacher, group._id)">
         {{group.title}}
       </a>
       <div class="">
         {{ group.language }}<br/>
         {{ group.level }}<br/>
-        {{ group.startDate }}<br/>
+        Starts {{ group.startDate }}<br/>
       </div>
     </div>
 

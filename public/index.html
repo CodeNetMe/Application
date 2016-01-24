@@ -24,13 +24,20 @@
 <!--     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" /> -->
   </head>
   <body>
-      <div ng-controller="LoginController">
+      <div ng-controller="LoginController" >
+	  <div ng-show="!loggedIn">
       <input id="searchbar" type="text" ng-model="username">
-      <input id="searchbar" type="text" ng-model="password">
+      <input id="searchbar" type="password" ng-model="password">
       <input type="button" value="Login" ng-click="login()">
 	  	    <div ng-controller="SignupController">
     <a ng-href="/public/#/sign-up"><input id="signup" type="button"  value="Sign Up"></a>
+	</div>
+
     </div>
+	<div id="loginUsername" ng-show="loggedIn">
+	<span>Logged In As {{user.profile.username}}</span>
+	<input type="button" value="Logout" ng-click="logout()">
+	</div>
 	      </div>
 	
   <!--Navbar-->
@@ -52,7 +59,7 @@
       <input id="searchbar" type="text" ng-model="title">
       <input type="button" value="Search" ng-click="search()">
   	<input type="button" value="New Group" ng-click="newGroup()">
-	{{newGroupError}}
+	<span ng-show="!loggedIn">{{newGroupError}}</span>
 	</div>
   </div>
   <!--End Navbar-->
