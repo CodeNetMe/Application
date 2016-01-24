@@ -167,7 +167,7 @@ module.exports = function(wagner) {
   api.get('/newGroup', wagner.invoke(function(Group,User) {
     return function(req, res) {
 		// change this to query by param username afterwards::::::
-	  User.findOne( {'profile.username' : "john"},function (err, user) {
+	  User.findById( req.query.userID,function (err, user) {
 		console.log("Found User: "+user.profile.username);
 	  if (err) {console.log (err);
 		return  

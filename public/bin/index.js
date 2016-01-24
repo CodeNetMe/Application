@@ -46,7 +46,7 @@ exports.NavbarController = function ($scope,$http,$location,Scopes) {
 	  
 	if (Scopes.get("LoginController").loggedIn){
   	$http.get('/api/v1/newGroup',
-	{params : {'title': $scope.title, 'level' : $scope.level, 'language' : $scope.program_language}}).success(function(data){
+	{params : {'title': $scope.title, 'level' : $scope.level, 'language' : $scope.program_language, userID: Scopes.get("LoginController").user._id}}).success(function(data){
         $scope.classData = data;
         console.log($scope.classData);
 	})} else {
