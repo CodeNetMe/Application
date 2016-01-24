@@ -24,7 +24,7 @@ exports.CounterController = function ($scope,$http) {
 	}
 }
 
-exports.NavbarController = function ($scope,$http,$location) {
+exports.NavbarController = function ($scope,$http,$location,Scopes) {
 	
   $scope.title = "";
   $scope.program_language = "";
@@ -40,13 +40,19 @@ exports.NavbarController = function ($scope,$http,$location) {
         console.log($scope.classData);
     })
   }
+  $scope.newGroupError = ""
   $scope.newGroup = function(){
 	  //try changing this into a post later on
+	  
+	if (Scopes.get("LoginController").loggedIn){
   	$http.get('/api/v1/newGroup',
 	{params : {'title': $scope.title, 'level' : $scope.level, 'language' : $scope.program_language}}).success(function(data){
         $scope.classData = data;
         console.log($scope.classData);
-    })
+	})} else {
+		$scope.newGroupError = "Not Logged In"
+		console.log("Not Logged In!!!!")
+	}
     }
 }
 
@@ -81,9 +87,9 @@ exports.ClassController = function($scope, $routeParams, $http){
     $scope.currentClass = data.group;
   	$scope.teacher = data.teacher;
   	console.log($scope.currentClass);
-  })
+  
 
- $http.get('/api/v1/lessons', {params: {group: $scope.currentClass}}).success(function(data){
+ $http.get('/api/v1/lessons', {params: {group: $scope.currentClass._id}}).success(function(data){
     $scope.lessons = data;
 	console.log("LESSONS: " + $scope.lessons);
 
