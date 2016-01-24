@@ -75,11 +75,12 @@ exports.ClassController = function($scope, $routeParams, $http){
 	console.log("ID: " + $routeParams.id)
   $scope.lessonMsg = "";
   var id = encodeURIComponent($routeParams.id);
+  $scope.lesson = null;
 
   $http.get('/api/v1/group', {params : {id: id}}).success(function(data){
-  $scope.currentClass = data.group;
-	$scope.teacher = data.teacher;
-	console.log($scope.currentClass);
+    $scope.currentClass = data.group;
+  	$scope.teacher = data.teacher;
+  	console.log($scope.currentClass);
   })
 
  $http.get('/api/v1/lessons', {params: {group: $scope.currentClass}}).success(function(data){
@@ -93,6 +94,13 @@ exports.ClassController = function($scope, $routeParams, $http){
 
     $http.get('/api/v1/newLesson', {params: { group : $scope.currentClass, date: date, link: $scope.lessonLink, title : $scope.lessonTitle}}).success(function(data){
       $scope.lessonMsg = data;
+    }).error(function(){
+      $scope.lessonMsg = "Please fill in all the fields."
+    })
+ }
+ $scope.lesson = function(lessonID){
+    $http.get('/api/v1/questions', {params: {lesson: lessonID}}).success(function(data){
+      $scope.questions = data;
     })
  }
 }
@@ -121,11 +129,6 @@ exports.NewQuestionController = function($scope, $http) {
         console.log($scope.createResult);
     })
     }
-	
-	
-	
-	
-
 }
 
 exports.AnswerQuestionController = function($scope, $http) {
@@ -152,15 +155,7 @@ exports.AnswerQuestionController = function($scope, $http) {
         console.log($scope.createResult);
     })
     }
-	
-	
-	
-	
-	
-	
 }
-
-
 
 exports.SignupController = function($scope, $http, $location) {
   $scope.signUp = function(){
@@ -175,14 +170,12 @@ exports.SignupController = function($scope, $http, $location) {
         $scope.errormsg = "User already exists"
       }
       else{
+        $scope.errormsg = "User Created"
         $location.path('/');
       }
     })
   }
 }
-
-
-
 
 
 },{}],2:[function(require,module,exports){

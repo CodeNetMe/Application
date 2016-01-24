@@ -6,17 +6,30 @@
 
 	<!-- List of links to lessons-->
 	<ul>
-	<div id="lessons" ng-repeat="lesson in lessons track by $index">
+	<div id="lessons" ng-repeat="lsn in lessons track by $index">
 		<li>
-			<a href={{lesson.link}}
+			<a href={{lsn.link}} target="_blank" ng-click="lesson(lsn._id)">
 			<div>
-			{{lesson.title}}<br/>
-			{{lesson.date}}<br/>
+			{{lsn.title}}<br/>
+			{{lsn.date}}<br/>
 			</div>
 			</a>
 		</li>
 	</div>
 	</ul>
 	<!-- End of list of links to lessons-->
+
+ 	<div id="questions">
+		<div ng-repeat="question in questions track by $index">
+		<p>{{ question.mainSentence }}</p>
+		<form>
+			<input ng-model="studentanswer" type="radio" value=a> {{ question.a.sentence }}<br>
+			<input ng-model="studentanswer" type="radio" value=b> {{ question.b.sentence }}<br>
+			<input ng-model="studentanswer" type="radio" value=c> {{ question.c.sentence }}<br>
+			<input ng-model="studentanswer" type="radio" value=d> {{ question.d.sentence }}<br>
+		</form>
+		<p>{{ studentanswer }}</p>
+		</div>
+	</div>
 
 </div>
