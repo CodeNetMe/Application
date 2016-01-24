@@ -20,6 +20,11 @@ module.exports = new mongoose.Schema({
 		
 	questions: {
 		type : [{type : mongoose.Schema.ObjectId, ref: 'Question'}]
+	},
+
+	title: {
+		type: String,
+		required: true
 	}
 
 

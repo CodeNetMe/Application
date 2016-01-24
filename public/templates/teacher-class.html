@@ -1,4 +1,4 @@
-<!-- Template for a class page per group -->
+<!-- Template for a class page for a teacher -->
 
 <div ng-controller="ClassController" class="class-page">
 	<h1>{{currentClass.title}}</h1>
@@ -18,5 +18,16 @@
 	</div>
 	</ul>
 	<!-- End of list of links to lessons-->
+
+	<!--Create a lesson-->
+	<div>
+		Schedule and Create a Lesson
+		<p><datetimepicker data-ng-model="data.date"></datetimepicker></p>
+		<p>Title: <input type="text" ng-model="lessonTitle"></p>
+		<p>Link: <input type="text" ng-model="lessonLink"></p>
+		<p><input type="button" value="Submit" ng-click="createLesson()"></p>
+		{{lessonMsg}}
+	</div>
+	<!--End create lesson-->
 
 </div>
