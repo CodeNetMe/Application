@@ -25,6 +25,11 @@ module.exports = new mongoose.Schema({
 	title: {
 		type: String,
 		required: true
+	},
+	
+	questionIndex: {
+		type: Number,
+		Default: 0
 	}
 
 

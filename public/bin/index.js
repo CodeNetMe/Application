@@ -85,14 +85,20 @@ exports.ClassController = function($scope, $routeParams, $http){
 
  $http.get('/api/v1/lessons', {params: {group: $scope.currentClass}}).success(function(data){
     $scope.lessons = data;
+	console.log("LESSONS: " + $scope.lessons);
 
 
   })
+  })
+
+	//console.log("CURRENT CLASS: " + $scope.currentClass);
+ 
 
  $scope.createLesson = function(){
     var date = $scope.data.date;
+	console.log(date)
 
-    $http.get('/api/v1/newLesson', {params: { group : $scope.currentClass, date: date, link: $scope.lessonLink, title : $scope.lessonTitle}}).success(function(data){
+    $http.get('/api/v1/newLesson', {params: { group : $scope.currentClass._id, date: date, link: $scope.lessonLink, title : $scope.lessonTitle}}).success(function(data){
       $scope.lessonMsg = data;
     }).error(function(){
       $scope.lessonMsg = "Please fill in all the fields."
@@ -201,7 +207,7 @@ exports.searchResults = function(){
 exports.classPage = function(){
   return{
     controller:'ClassController',
-    templateUrl:'/public/templates/class-page.html'
+    templateUrl:'/public/templates/teacher-class.html'
   }
 }
 
@@ -210,6 +216,13 @@ exports.signUp = function(){
     controller:'SignupController',
     templateUrl: '/public/templates/sign-up.html'
   }
+}
+
+exports.newQuestion = function() {
+	return {
+		controller:'NewQuestionController',
+		templateUrl: '/public/templates/make-quiz.html'
+	}
 }
 	
 
