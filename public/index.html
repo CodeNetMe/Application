@@ -13,7 +13,7 @@
 	<script type="text/javascript" src="node_modules/angular-bootstrap-datetimepicker/src/js/datetimepicker.js"></script>
 
 
-    <link rel="stylesheet" type="text/css" href="css/stylesheet.css" />
+  <link rel="stylesheet" type="text/css" href="css/stylesheet.css" />
 	
 	
 	<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
@@ -24,7 +24,7 @@
 <!--     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" /> -->
   </head>
   <body>
-      	<div ng-controller="LoginController">
+      <div ng-controller="LoginController">
       <input id="searchbar" type="text" ng-model="username">
       <input id="searchbar" type="text" ng-model="password">
       <input type="button" value="Login" ng-click="login()">
@@ -32,15 +32,11 @@
     <a ng-href="/public/#/sign-up"><input id="signup" type="button"  value="Sign Up"></a>
     </div>
 	      </div>
-      <div id="navbar">
-
-
-		
-		
+	
   <!--Navbar-->
   <div ng-controller="NavbarController">
 
-
+    <div id="navbar">
 	  <div id = "navigation">
       <select ng-model="program_language">
         <option value="">Language (Any)</option>
@@ -58,20 +54,18 @@
   	<input type="button" value="New Group" ng-click="newGroup()">
 	{{newGroupError}}
 	</div>
-
-
+  </div>
+  <!--End Navbar-->
       
-
-
-
-
+  <!--Search Results/Class area -->
 	<ng-view></ng-view>
-    </div>
-    <!--End Navbar-->
-  	<!--Search Results/Class area -->
+  
+  </div>
+
+
     	
 	 
-  </div>
+
 
 
   </body>
