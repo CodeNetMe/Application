@@ -211,10 +211,10 @@ module.exports = function(wagner) {
 	  }
 		console.log("Group of lesson TITLE: " + lesson.group.title);
 		var question = new Question({ mainSentence : req.query.mainSentence,
-		a : { sentence : req.query.aSentence, correct : aCorrect},
-		b : { sentence : req.query.bSentence, correct : bCorrect},
-		c : { sentence : req.query.cSentence, correct : cCorrect},
-		d : { sentence : req.query.aSentence, correct : dCorrect}
+		a : { sentence : req.query.aSentence, correct : req.query.aCorrect},
+		b : { sentence : req.query.bSentence, correct : req.query.bCorrect},
+		c : { sentence : req.query.cSentence, correct : req.query.cCorrect},
+		d : { sentence : req.query.dSentence, correct : req.query.dCorrect}
 		}
 		)
 		//var group = new Group({ title : "Expert Java", language : "Java", level : "Expert", 
@@ -224,9 +224,9 @@ module.exports = function(wagner) {
 		if (err) {console.log (err);
 		return  
 	  }
-		console.log("group added!")
+		console.log("question added!")
 		// saved!
-		res.send("Group Added!")
+		res.send("Question Added!")
       })
       })
 

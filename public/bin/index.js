@@ -106,8 +106,61 @@ exports.NewQuestionController = function($scope, $http) {
 	$scope.cSentence = ""
 	$scope.cCorrect = false
 	$scope.dSentence = ""
-	$scope.dCorrect = false	
+	$scope.dCorrect = false
+	
+	$scope.createQuestion = function(){
+	  //try changing this into a post later on
+  	$http.get('/api/v1/newQuestion',
+	{params : { mainSentence : $scope.mainSentence,
+		a : { sentence : $scope.aSentence, correct : $scope.aCorrect},
+		b : { sentence : $scope.bSentence, correct : $scope.bCorrect},
+		c : { sentence : $scope.cSentence, correct : $scope.cCorrect},
+		d : { sentence : $scope.dSentence, correct : $scope.dCorrect}
+		}}).success(function(data){
+        $scope.createResult = data;
+        console.log($scope.createResult);
+    })
+    }
+	
+	
+	
+	
+
 }
+
+exports.AnswerQuestionController = function($scope, $http) {
+	$scope.mainSentence = ""
+	$scope.aSentence = ""
+	$scope.aCorrect = false
+	$scope.bSentence = ""
+	$scope.bCorrect = false
+	$scope.cSentence = ""
+	$scope.cCorrect = false
+	$scope.dSentence = ""
+	$scope.dCorrect = false
+	
+	$scope.createQuestion = function(){
+	  //try changing this into a post later on
+  	$http.get('/api/v1/newQuestion',
+	{params : { mainSentence : $scope.mainSentence,
+		a : { sentence : $scope.aSentence, correct : $scope.aCorrect},
+		b : { sentence : $scope.bSentence, correct : $scope.bCorrect},
+		c : { sentence : $scope.cSentence, correct : $scope.cCorrect},
+		d : { sentence : $scope.dSentence, correct : $scope.dCorrect}
+		}}).success(function(data){
+        $scope.createResult = data;
+        console.log($scope.createResult);
+    })
+    }
+	
+	
+	
+	
+	
+	
+}
+
+
 
 exports.SignupController = function($scope, $http, $location) {
   $scope.signUp = function(){
