@@ -24,11 +24,19 @@
 <!--     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" /> -->
   </head>
   <body>
-  
-
+      <div id="navbar">
+    	<div ng-controller="LoginController">
+      <input id="searchbar" type="text" ng-model="username">
+      <input id="searchbar" type="text" ng-model="password">
+      <input type="button" value="Login" ng-click="login()">
+	      </div>
+		
+		
   <!--Navbar-->
   <div ng-controller="NavbarController">
-    <div id="navbar">
+
+
+	  
       <select ng-model="program_language">
         <option value="">Language (Any)</option>
         <option value="Java">Java</option >
@@ -47,23 +55,19 @@
   	The title is {{title}}
   	<a href="https://youtu.be/ANiIiXAqU_g"> Video</a>
 
-  	<div ng-controller="LoginController">
-      <input id="searchbar" type="text" ng-model="username">
-      <input id="searchbar" type="text" ng-model="password">
-      <input type="button" value="Login" ng-click="login()">
-      <datetimepicker data-ng-model="data.date"></datetimepicker>
-    </div>
+
+      
+
 
     <div ng-controller="SignupController">
     <a ng-href="/public/#/sign-up"><input id="signup" type="button"  value="Sign Up"></a>
     </div>
 
-
+	<ng-view></ng-view>
     </div>
     <!--End Navbar-->
-
   	<!--Search Results/Class area -->
-    <ng-view></ng-view>
+    	
 	 
   </div>
 

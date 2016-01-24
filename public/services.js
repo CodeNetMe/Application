@@ -1,5 +1,5 @@
 var status = require('http-status');
-
+/*
 exports.$user = function($http) {
   var s = {};
 
@@ -21,4 +21,9 @@ exports.$user = function($http) {
   setInterval(s.loadUser, 60 * 60 * 1000);
 
   return s;
+};
+*/
+
+exports.$Scopes = function() {
+    return {}
 };

@@ -51,11 +51,13 @@ exports.NavbarController = function ($scope,$http,$location) {
     }
 }
 
-exports.LoginController = function ($scope,$http) {
+exports.LoginController = function ($scope,$http, Scopes) {
 	// fix this afterwards to be more difficult to hack.
 	$scope.loggedIn = false;
 	$scope.username = "Username";
 	$scope.password = "Password";
+	Scopes.store("LoginController",$scope);
+	console.log("SCOPES TEST: " + Scopes.get("LoginController").username);
 	$scope.login = function(){
 	  $http.
 	  get('/api/v1/login', {
@@ -333,6 +335,20 @@ _.each(services, function(factory, name) {
 });
 
 var app = angular.module('cn-test', ['cn-test.components', 'ngRoute','ui.bootstrap.datetimepicker']);
+
+app.factory('Scopes', function ($rootScope) {
+    var mem = {};
+ 
+    return {
+        store: function (key, value) {
+            $rootScope.$emit('scope.stored', key);
+            mem[key] = value;
+        },
+        get: function (key) {
+            return mem[key];
+        }
+    };
+});
 
 app.config(function($routeProvider) {
   $routeProvider.

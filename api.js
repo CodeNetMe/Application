@@ -39,7 +39,7 @@ module.exports = function(wagner) {
 	  //if (err) return handleError(err);
 	  //console.log("student added!")
       // saved!
-	  
+	  console.log("Username: " + req.query.username + "   password:" + req.query.password)
 	  
 	  // VERY UNSECURE, NEED TO FIND WAY OF ENCODING THIS PASSWORD AFTERWARDS
 	  User.findOne( {'profile.username' : req.query.username, 'profile.password' : req.query.password},function (err, user) {
