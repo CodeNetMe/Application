@@ -76,17 +76,37 @@ module.exports = function(wagner) {
   api.get('/lessons', wagner.invoke(function(Lesson) {
 	console.log("Connected to group!")
     return function(req, res) {
-
+		console.log("GROUP: " + req.query.group)
 	  //var user = new User({ profile: {username:'john', password: '123'}});
 	  //user.save(function (err) {
 	  //if (err) return handleError(err);
 	  //console.log("student added!")
       // saved!
 	  Lesson.find( {group : req.query.group}).lean().exec(function (err, lessons) {
-		if (err) return handleError(err);
+		//if (err) return handleError(err);
 		//console.log(user.profile.username);
 		//res.data = user.profile.username;
+		console.log("Lessons: " + lessons);
 		res.json(lessons);
+      })
+    };
+  }));
+  
+  api.get('/questions', wagner.invoke(function(Question,Lesson) {
+	console.log("Querying for Questions!")
+    return function(req, res) {
+		console.log("LESSON: " + req.query.lesson)
+	  //var user = new User({ profile: {username:'john', password: '123'}});
+	  //user.save(function (err) {
+	  //if (err) return handleError(err);
+	  //console.log("student added!")
+      // saved!
+	  Question.find( {'_id': { $in: lesson.questions}}).lean().exec(function (err, questions) {
+		//if (err) return handleError(err);
+		//console.log(user.profile.username);
+		//res.data = user.profile.username;
+		console.log("Questions: " + questions);
+		res.json(questions);
       })
     };
   }));
@@ -175,15 +195,15 @@ module.exports = function(wagner) {
   api.get('/newLesson', wagner.invoke(function(Lesson,Group) {
     return function(req, res) {
 		// change this to query by param username afterwards::::::
-	  Group.findOne( {_id : req.query._id},function (err, group) {
-		console.log("Found User: "+user.profile.username);
+	  Group.findOne( {_id : req.query.group},function (err, group) {
 	  if (err) {console.log (err);
 		return  
 	  }
-		console.log("TITLE: " + group.title);
+		console.log("GROUP: " + group);
 		var lesson = new Lesson({ date : req.query.date,
 		group : group, 
-		link : req.query.link
+		link : req.query.link,
+		title : req.query.title
 		})
 		//var group = new Group({ title : "Expert Java", language : "Java", level : "Expert", 
 		//teacher : user, students : []
@@ -204,23 +224,16 @@ module.exports = function(wagner) {
   api.get('/newQuestion', wagner.invoke(function(Question,Lesson) {
     return function(req, res) {
 		// change this to query by param username afterwards::::::
-	  Lesson.findOne( {_id : req.query._id},function (err, group) {
-		console.log("Found User: "+user.profile.username);
-	  if (err) {console.log (err);
-		return  
-	  }
-		console.log("Group of lesson TITLE: " + lesson.group.title);
-		var question = new Question({ mainSentence : req.query.mainSentence,
+		
+	  var question = new Question({ mainSentence : req.query.mainSentence,
 		a : { sentence : req.query.aSentence, correct : req.query.aCorrect},
 		b : { sentence : req.query.bSentence, correct : req.query.bCorrect},
 		c : { sentence : req.query.cSentence, correct : req.query.cCorrect},
 		d : { sentence : req.query.dSentence, correct : req.query.dCorrect}
 		}
 		)
-		//var group = new Group({ title : "Expert Java", language : "Java", level : "Expert", 
-		//teacher : user, students : []
-		//})
-		lesson.save(function (err) {
+	
+	  question.save(function (err) {
 		if (err) {console.log (err);
 		return  
 	  }
@@ -228,6 +241,18 @@ module.exports = function(wagner) {
 		// saved!
 		res.send("Question Added!")
       })
+		
+	  Lesson.findByIdAndUpdate( req.query.lesson, 
+	  {$push: {questions: question}},
+	  {safe: true, upsert: true}, function (err, group) {
+	  if (err) {console.log (err);
+		return  
+	  }
+		
+		//var group = new Group({ title : "Expert Java", language : "Java", level : "Expert", 
+		//teacher : user, students : []
+		//})
+		
       })
 
     };

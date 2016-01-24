@@ -79,19 +79,24 @@ exports.ClassController = function($scope, $routeParams, $http){
   $http.get('/api/v1/group', {params : {id: id}}).success(function(data){
   $scope.currentClass = data.group;
 	$scope.teacher = data.teacher;
-	console.log($scope.currentClass);
-  })
-
- $http.get('/api/v1/lessons', {params: {group: $scope.currentClass}}).success(function(data){
+	console.log("NESTED CLASS: " + $scope.currentClass.title);
+	
+	$http.get('/api/v1/lessons', {params: {group: id}}).success(function(data){
     $scope.lessons = data;
+	console.log("LESSONS: " + $scope.lessons);
 
 
   })
+  })
+
+	//console.log("CURRENT CLASS: " + $scope.currentClass);
+ 
 
  $scope.createLesson = function(){
     var date = $scope.data.date;
+	console.log(date)
 
-    $http.get('/api/v1/newLesson', {params: { group : $scope.currentClass, date: date, link: $scope.lessonLink, title : $scope.lessonTitle}}).success(function(data){
+    $http.get('/api/v1/newLesson', {params: { group : $scope.currentClass._id, date: date, link: $scope.lessonLink, title : $scope.lessonTitle}}).success(function(data){
       $scope.lessonMsg = data;
     })
  }
@@ -208,7 +213,7 @@ exports.searchResults = function(){
 exports.classPage = function(){
   return{
     controller:'ClassController',
-    templateUrl:'/public/templates/class-page.html'
+    templateUrl:'/public/templates/teacher-class.html'
   }
 }
 
@@ -217,6 +222,13 @@ exports.signUp = function(){
     controller:'SignupController',
     templateUrl: '/public/templates/sign-up.html'
   }
+}
+
+exports.newQuestion = function() {
+	return {
+		controller:'NewQuestionController',
+		templateUrl: '/public/templates/make-quiz.html'
+	}
 }
 	
 
