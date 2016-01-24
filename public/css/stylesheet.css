@@ -8,7 +8,11 @@ body{
 #loginUsername span{
 	color:white;
 }
-
+#logo{
+	height:80px;
+	float:right;
+	margin:0px;
+}
 #navbar{
 	width:100%;
 	padding-top:80px;
