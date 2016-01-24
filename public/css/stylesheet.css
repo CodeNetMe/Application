@@ -6,13 +6,22 @@ body{
 #navbar{
 	position:relative;
 	width:100%;
-	margin:0px;
 	background-color: gray;
 	padding:10px;
+	margin: auto;
+    width: 100%;
+    border: 3px solid #73AD21;
+    padding: 10px;
 }
 
 #searchbar{
 	font-size:14px;
+}
+
+#navigation{
+	width: 50%;
+	margin: auto;
+	padding: 200px
 }
 
 /*Divs for groups when searching*/
@@ -21,7 +30,7 @@ body{
 	display : block;
 }
 .group-details{
-	background-color: #d6d6c2;
+	background-color: white/*#d6d6c2*/;
 	float:left;
 	padding:20px;
 	height: 200px;
