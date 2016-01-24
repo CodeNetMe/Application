@@ -62,8 +62,10 @@ exports.LoginController = function ($scope,$http) {
 	    params: { username: $scope.username, password : $scope.password}
 		}).success(function(data) {
 		  
-		  $scope.loggedIn = data.loggedIn
-		  console.log("Data:" + $scope.loggedIn)
+		  $scope.loggedIn = data.loggedIn;
+		  $scope.user = data.user;
+		  console.log(data);
+		  console.log($scope.user);
 	  })
 	}
 }
@@ -106,10 +108,14 @@ exports.NewQuestionController = function($scope, $http) {
 }
 
 exports.SignupController = function($scope, $http, $location) {
-  $scope.errormsg = "";
-  $scope.signUp = function($scope, $http){
+  $scope.signUp = function(){
+	  
+	console.log($scope.username);
+	console.log($scope.password);
 
     $http.get('/api/v1/newUser', {params: { username: $scope.username, password: $scope.password}}).success(function(data){
+	console.log(data);
+	$scope.errormsg = data
       if (data.userTaken){
         $scope.errormsg = "User already exists"
       }
@@ -297,10 +303,10 @@ exports.classPage = function(){
   }
 }
 
-exports.signUp = funtion(){
+exports.signUp = function(){
   return{
     controller:'SignupController',
-    templateUrl: 'sign-up.html'
+    templateUrl: '/public/templates/sign-up.html'
   }
 }
 	

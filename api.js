@@ -46,7 +46,7 @@ module.exports = function(wagner) {
 		if (err) return handleError(err);
 		//res.data = user.profile.username;
 		if (user != undefined) {
-		res.json({ loggedIn : true});
+		res.json({ loggedIn : true, user : user});
 		} else {
 			res.json({ loggedIn : false});
 		}
@@ -114,20 +114,32 @@ module.exports = function(wagner) {
   // Create a new user that can be a student or teacher.
   api.get('/newUser', wagner.invoke(function(User) {
     return function(req, res) {
-
+		console.log("CREATING NEW USER")
+		/*
+		var userExists = false
 		User.findOne( {'profile.username' : req.query.username},function (err, user) { 
+			console.log("FOUND MATCHING USER")
 			if (user!=undefined) {
-				res.json({userTaken : "Username Taken"})
+				console.log("USER ALREADY EXISTS");
+				res.json({userTaken : true})
+				userExists = true
+				res.send("User Taken")
 			}
-		})
-	
+		})*/
+	  //if(!userExists) {
 	  var user = new User({ profile: {username: req.query.username, password: req.query.password}});
 	  user.save(function (err) {
-	  if (err) return handleError(err);
+	  //if (err) return handleError(err);
 	  console.log("user added!")
-	  res.send("User Added")
+	  if(err) {console.log(err)
+		  res.json({userTaken : true});
+	  }
+	  else{
+	  res.send("User Added");
+	  }
+	  
       // saved!
-      })
+      }) //}
     };
   }));
 
